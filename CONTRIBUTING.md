@@ -101,6 +101,10 @@ The following individuals are acknowledged for their significant contributions t
             <td>Independent Contributor</td>
         </tr>
         <tr>
+            <td>Jen Shomshor</td>
+            <td>Independent Contributor</td>
+        </tr>
+        <tr>
             <td>Marti Smith</td>
             <td>Independent Contributor</td>
         </tr>
