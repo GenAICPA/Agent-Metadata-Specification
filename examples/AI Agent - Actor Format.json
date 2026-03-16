@@ -1,0 +1,41 @@
+{
+  "actor": {
+    "type": "agent",
+    "identification": {
+      "id": "AGENT-FRAUD-DET-001",
+      "name": "Fraud Detective",
+      "description": "An agent that calls external tools (LexisNexis, Socure) to verify identity and detect synthetic ID patterns",
+      "role": "Identity Integrity Guardian",
+      "owner": "Sarah Chen",
+      "organization": "Fraud Prevention Dept",
+      "environment": "PROD",
+      "governance_status": "APPROVED",
+      "tags": ["fraud", "identity", "verification"]
+    },
+    "configuration": {
+      "access_scope": "RESTRICTED_PII_ACCESS",
+      "policies": ["DATA-PRIVACY-ACT", "FRAUD-DETECTION-GUIDELINES"]
+    },
+    "agent_profile": {
+      "model_info": {
+        "name": "gemini-2.0-flash",
+        "version": "v1"
+      },
+      "autonomy_level": "SEMI-AUTONOMOUS",
+      "reasoning_model": "ReAct",
+      "instructions": "Verify user identities and detect Synthetic Identities by combining real and fake data. Collect PII respectfully, mask sensitive data in output, and follow the decision matrix for PASS/REVIEW/REJECT recommendations."
+    },
+    "relations": [
+      {
+        "type": "delegated_by",
+        "target_id": "EMP-98234",
+        "target_type": "human"
+      },
+      {
+        "type": "uses",
+        "target_id": "TOOL-LEXISNEXIS-VERIFY",
+        "target_type": "tool"
+      }
+    ]
+  }
+}

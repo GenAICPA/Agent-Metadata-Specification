@@ -1,85 +1,58 @@
-# Agent Metadata Specification
+# Actor Metadata Specification
 
 ## Introduction
 
-AI agents are multiplying across the enterprise. Similar to the challenges with shadow IT, AI agents are creating so called shadow action. AI agents are often unmanaged, unmapped and autonomous. The result is a critical visibility vacuum.
+Both AI agents and human actors are multiplying across the enterprise, taking actions that affect systems and data. While AI agents often create "shadow actions" due to a lack of visibility, human actions are often fragmented across multiple disparate systems (IAM, HR, SSO, etc.).
+
+The **Actor Metadata Specification** provides a unified, cross-platform, event-level record of what an actor—whether human or AI—actually did, with the same granularity and governance standards.
 
 <p align="center">
   <img src="./assets/images/Silent%20Proliferation.png" alt="Silent Proliferation" width="600">
   <br>
 </p>
 
+## Unified Actor Governance
 
-## Agent Proliferation and Challenges
+AI agents and human actors share several governance needs:
+- Both take actions that affect systems and data.
+- Both can have privileges, scopes, and access rights.
+- Both can cause harm, errors, or fraud.
+- Both need to be monitored for compliance and auditability.
+- Both operate across multiple systems and platforms.
+- Both require identity, provenance, and accountability metadata.
 
-Because agents are easy to build and deploy, they create multiple challenges:
+By unifying human and agent metadata, organizations can bridge the gap between traditional identity systems and the new world of autonomous agents.
 
-- *Discovery Gap* – Organizations do not know that the agents exist, who owns them, or where they operate.
-- *Risk Multiplier* – Agents may operate as unmonitored “digital insiders” with high privileges and broad access.
-- *Cost Bloat* – Redundant agents waste compute cycles and inflate cloud bills.
+## Why Actor Metadata Matters
 
-<p align="center">
-  <img src="./assets/images/The%20Visibility%20Vaccum.png" alt="The Visibility Vaccum" width="600">
-  <br>
-</p>
-
-This document serves as a comprehensive template for capturing the essential metadata and core configuration parameters of a specific AI agent. The strategic importance of this template lies in its role as a standardized framework for organizations leveraging enterprise-grade agentic solutions.
+1. **Mixed-Initiative Workflows** – Real-world workflows involve humans prompting agents, agents acting on behalf of humans, and humans reviewing agent outputs. Unified logging allows for full reconstruction of who initiated, approved, and executed an action.
+2. **Delegation Chains** – Agents can act on behalf of humans or other agents. Actor metadata allows organizations to reconstruct complex delegation chains (e.g., Human → Agent A → Agent B → System Action).
+3. **Symmetry in Accountability** – Governance collapses if AI is held to a higher standard of traceability than humans. This specification ensures event-level accountability for all actors.
 
 ## Enhancing Google Agent2Agent (A2A) Protocol
 
-The Google [Agent2Agent (A2A)](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/) is an open protocol that provides a standard way for agents to collaborate with each other, regardless of the underlying framework or vendor. Agents can advertise their capabilities using an "Agent Card" in JSON format, allowing the client agent to identify the best agent that can perform a task and leverage A2A to communicate with the remote agent.
+The Google [Agent2Agent (A2A)](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/) provides a standard for agent collaboration. The Actor Metadata Specification enhances this by adding business context, risk management, and human-in-the-loop governance.
 
-The Agent Card lays the operational foundation for agents to find each other, understand basic capabilities (modalities), and handshake for collaboration. However, the Agent Card does not address the business context, risk management, and governance.
+While the original proposal focused on AI agents, this specification generalizes to an **Actor Metadata Specification** covering:
+- Actor identity (human or AI)
+- Actor privileges
+- Actor actions
+- Actor lifecycle
+- Actor accountability and provenance
 
-The Agent Metadata Specification seeks to enhance the Google Agent Card to address these additional topics.
+## Importance of Actor Metadata Standards
 
-## Importance of Agent Metadata Standards
+By implementing this robust specification, enterprises gain:
+- **Unified Enterprise-Wide View:** A consolidated, holistic view of all actors (human and AI) across the organization.
+- **Enhanced Accountability:** Rigorous capture of ownership and delegation, ensuring clear accountability.
+- **Automated Risk Management:** Systematic risk analysis applied across all business processes.
+- **Digital Signatures and Integrity:** Utilizing digital signatures for non-repudiation and identity binding.
 
-By implementing this robust metadata specification, enterprises gain several critical, strategic advantages:
+## Actor Metadata Producers and Consumers
 
-- **Unified Enterprise-Wide View and Single Source of Truth of Agents:** The specification provides a mechanism to develop a consolidated, holistic view of all deployed agents across the entire organization. This centralization establishes a single, authoritative source of information for every agent, eliminating data silos and inconsistencies that can plague decentralized management systems.
+A wide range of platforms produce or consume actor metadata, including Hyperscalers, LLM Providers, HR Systems, IAM/SSO platforms, and GRC (Governance, Risk, and Compliance) platforms.
 
-- **Enhanced Accountability and Transparency of Ownership:** The metadata structure rigorously captures ownership details, ensuring clear accountability for the agent's performance, maintenance, and policy adherence. This transparency is crucial for operational governance and risk mitigation.
+---
 
-- **Automated Risk Management Functions for Agents:** By leveraging the standardized metadata, enterprises can apply systematic risk analysis, monitoring, and control across all business processes, applications, and the underlying agents they consume.
-
-- **Accelerated Audit Readiness for Governance and Compliance:** The standardized and comprehensive nature of the metadata significantly accelerates the process of achieving audit readiness. It provides a structured record necessary for satisfying stringent governance requirements and demonstrating compliance with internal policies and external regulations (e.g., GDPR, CCPA, industry-specific compliance standards).
-
-- **Easier Third-Party Risk Assessments for AI-Enabled Applications:** By standardizing the agent metadata, applications with embedded agents should find it easier to complete third-party risk assessments.
-
-## Agent Proliferation
-
-Traditional metadata platforms capture information primarily from analytical systems. However, the metadata challenges increase exponentially for agents, which also leverage operational systems.
-
-<p align="center">
-  <img src="./assets/images/A%20Critical%20Shift%20in%20Risk.png" alt="A Critical Shift in Risk" width="600">
-  <br>
-</p>
-
-A number of platforms either produce or consume agent metadata.
-
-<p align="center">
-  <img src="./assets/images/Enterprises%20must%20get%20ready%20to%20govern%20exponential%20agentic%20sprawl.png" alt="Enterprises must get ready to govern exponential agentic sprawl" width="600">
-  <br>
-</p>
-
-### Agent Metadata Producers including the following:
-
-- Hyperscalers (e.g., Microsoft Copilot, Google Vertex AI, IBM watsonx, Amazon Bedrock)
-- LLM Providers (e.g., OpenAI, Anthropic, Perplexity)
-- Data Cloud Providers (e.g., Snowflake, Databricks)
-- Pure Play Agent Platforms (e.g., crewAI, LangGraph)
-- Data Science Vendors (e.g., Dataiku, DataRobot, SAS)
-- Enterprise Applications with out-of-the-box (OOTB) and roll-your-own (RYO) agents
-  (e.g., ServiceNow NowAssist, SAP Joule, Workday Illuminate, Salesforce Agentforce)
-- Industry-Specific Applications with OOTB and RYO agents  
-  (e.g., Fiserv and NICE Actimize in Banking, Epic and Oracle in healthcare, Guidewire in Insurance)
-- The typical enterprise uses more than 1,000 applications and an increasing percentage of these platforms will have OOTB and RYO agents
-
-### Agent Metadata Consumers including the following:
-
-- Hyperscalers (e.g., Microsoft Agent 365, IBM watsonx)
-- Data Catalogs (e.g., Alation, Atlan, Collibra, data.world/ServiceNow, Informatica/Salesforce)
-- Enterprise Applications (e.g., ServiceNow AI Control Tower, Workday Illuminate)
-- Governance, Risk, and Compliance (GRC) Platforms (e.g., Archer, Hyperproof, MetricStream, ServiceNow IRM)
-
+### Legacy Support
+*Note: The `agent` root object is still supported for backwards compatibility but is deprecated in favor of the `actor` object.*
