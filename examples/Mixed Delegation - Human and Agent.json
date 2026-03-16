@@ -1,0 +1,78 @@
+{
+  "scenario": "Mixed Human-Agent Delegation Chain for High-Value Payment Approval",
+  "actors": [
+    {
+      "actor": {
+        "type": "human",
+        "identification": {
+          "id": "EMP-CHIEF-FIN-001",
+          "name": "James Wilson",
+          "role": "Chief Financial Officer"
+        },
+        "human_profile": {
+          "delegated_authority": [
+            {
+              "scope": "unlimited_payment_approval",
+              "delegated_by": "BOARD-OF-DIRECTORS"
+            }
+          ]
+        },
+        "relations": [
+          {
+            "type": "delegates_to",
+            "target_id": "AGENT-PAYMENT-ADVISOR",
+            "target_type": "agent"
+          }
+        ]
+      }
+    },
+    {
+      "actor": {
+        "type": "agent",
+        "identification": {
+          "id": "AGENT-PAYMENT-ADVISOR",
+          "name": "Payment Strategy Agent",
+          "role": "Treasury Optimization Assistant"
+        },
+        "agent_profile": {
+          "autonomy_level": "REACTIVE",
+          "instructions": "Analyze payment requests and recommend optimization strategies. Requires human approval for execution."
+        },
+        "relations": [
+          {
+            "type": "delegated_by",
+            "target_id": "EMP-CHIEF-FIN-001",
+            "target_type": "human"
+          },
+          {
+            "type": "delegates_to",
+            "target_id": "AGENT-EXECUTION-BOT",
+            "target_type": "agent"
+          }
+        ]
+      }
+    },
+    {
+      "actor": {
+        "type": "agent",
+        "identification": {
+          "id": "AGENT-EXECUTION-BOT",
+          "name": "Transaction Executor",
+          "role": "SWIFT Gateway Operator"
+        },
+        "agent_profile": {
+          "autonomy_level": "SEMI-AUTONOMOUS",
+          "instructions": "Execute SWIFT transactions after receiving signed approval from the Payment Strategy Agent and verifying the human initiator's signature."
+        },
+        "relations": [
+          {
+            "type": "delegated_by",
+            "target_id": "AGENT-PAYMENT-ADVISOR",
+            "target_type": "agent"
+          }
+        ]
+      }
+    }
+  ],
+  "delegation_chain": "Human (CFO) -> Agent (Advisor) -> Agent (Executor) -> System Action"
+}

@@ -1,0 +1,76 @@
+{
+  "actor": {
+    "type": "human",
+    "identification": {
+      "id": "EMP-98234",
+      "name": "Sarah Chen",
+      "description": "Senior Financial Auditor with oversight of AI-assisted claims processing.",
+      "role": "Senior Auditor",
+      "owner": "Finance Compliance Team",
+      "organization": "Internal Audit",
+      "environment": "PROD",
+      "governance_status": "APPROVED",
+      "tags": ["finance", "audit", "human-oversight"]
+    },
+    "configuration": {
+      "access_scope": "READ_WRITE_FINANCIAL_RECORDS",
+      "policies": ["FIN-AUDIT-2025", "AI-ETHICS-GOVERNANCE"]
+    },
+    "security": {
+      "authentication": {
+        "methods": ["mfa", "pki"],
+        "pki_certificates": [
+          {
+            "subject": "CN=Sarah Chen, OU=Audit, O=Enterprise Corp, C=US",
+            "issuer": "CN=Enterprise Corporate CA, O=Enterprise Corp, C=US",
+            "serial_number": "550e8400-e29b-41d4-a716-446655440000",
+            "valid_from": "2024-01-01T00:00:00Z",
+            "valid_to": "2026-01-01T00:00:00Z"
+          }
+        ]
+      },
+      "signing": {
+        "supports_digital_signatures": true,
+        "signature_schemes": ["PAdES", "JWS"],
+        "key_management": "HSM"
+      }
+    },
+    "human_profile": {
+      "employment_status": "employee",
+      "department": "Finance",
+      "job_title": "Senior Auditor",
+      "training": [
+        {
+          "name": "SOX Controls Training",
+          "completed_at": "2024-05-15"
+        },
+        {
+          "name": "AI Oversight and Governance",
+          "completed_at": "2024-11-20"
+        }
+      ],
+      "competencies": ["IFRS", "SAP FI", "Risk Assessment"],
+      "delegated_authority": [
+        {
+          "scope": "approve_audit_reports",
+          "limit": "N/A",
+          "delegated_by": "DIR-FIN-001",
+          "effective_from": "2024-01-01T00:00:00Z",
+          "effective_to": "2025-12-31T23:59:59Z"
+        }
+      ]
+    },
+    "relations": [
+      {
+        "type": "reports_to",
+        "target_id": "DIR-FIN-001",
+        "target_type": "human"
+      },
+      {
+        "type": "delegates_to",
+        "target_id": "AGENT-FRAUD-DET-001",
+        "target_type": "agent"
+      }
+    ]
+  }
+}
